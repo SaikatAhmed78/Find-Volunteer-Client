@@ -7,12 +7,14 @@ import ManagePosts from "../Pages/ManagePosts";
 import PostDetails from "../Pages/PostDetails";
 import Login from "../Pages/Login";
 import Register from "../Pages/Register";
+import NotFoundPage from "../Common/NotFoundPage";
 
 
 const router = createBrowserRouter([
     {
         path: '/',
         element: <MainLayout></MainLayout>,
+        errorElement: <NotFoundPage></NotFoundPage>,
         children: [
             {
                 index: true,
