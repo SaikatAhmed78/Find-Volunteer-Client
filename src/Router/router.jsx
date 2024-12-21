@@ -5,6 +5,8 @@ import AllPosts from "../Pages/AllPosts";
 import AddPost from "../Pages/AddPost";
 import ManagePosts from "../Pages/ManagePosts";
 import PostDetails from "../Pages/PostDetails";
+import Login from "../Pages/Login";
+import Register from "../Pages/Register";
 
 
 const router = createBrowserRouter([
@@ -31,6 +33,14 @@ const router = createBrowserRouter([
             {
                 path: '/postDetails',
                 element: <PostDetails></PostDetails>
+            },
+            {
+                path: '/register',
+                element: <Register></Register>
+            },
+            {
+                path: '/login',
+                element: <Login></Login>
             },
 
         ]
