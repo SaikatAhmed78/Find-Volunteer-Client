@@ -1,13 +1,19 @@
+import React, { useContext } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { FaEnvelope, FaLock } from 'react-icons/fa';
 import Lottie from 'lottie-react';
+import Swal from 'sweetalert2';
 import animationData from '../../src/assets/lotte/signin - 1733926268989.json';
+import AuthContext from '../Context/AuthContext';
 import SocialLogin from '../Common/SocialLogin';
 
 
+
 const Login = () => {
+  const { signInUser } = useContext(AuthContext);
+  const navigate = useNavigate();
 
-
-  const handleSignin = (e) => {
+  const handleSignin = async (e) => {
     e.preventDefault();
     const form = e.target;
     const email = form.email.value;
@@ -23,30 +29,24 @@ const Login = () => {
       return;
     }
 
-    signInUser(email, password)
-      .then((result) => {
-
-        const user = {email: email};
-        axios.post('https://career-code.vercel.app/jwt', user)
-        .then(data => {
-        })
-
-        Swal.fire({
-          title: 'Success!',
-          text: 'Signed in successfully!',
-          icon: 'success',
-          confirmButtonText: 'OK',
-        })
-        navigate('/')
-      })
-      .catch((error) => {
-        Swal.fire({
-          title: 'Error!',
-          text: 'Failed to sign in!',
-          icon: 'error',
-          confirmButtonText: 'Try Later',
-        });
+    try {
+      const result = await signInUser(email, password);
+      
+      Swal.fire({
+        title: 'Success!',
+        text: 'Signed in successfully!',
+        icon: 'success',
+        confirmButtonText: 'OK',
       });
+      navigate('/');
+    } catch (error) {
+      Swal.fire({
+        title: 'Error!',
+        text: 'Failed to sign in!',
+        icon: 'error',
+        confirmButtonText: 'Try Later',
+      });
+    }
   };
 
   return (
@@ -92,6 +92,11 @@ const Login = () => {
           </form>
           <div className="mt-6">
             <SocialLogin />
+          </div>
+          <div className="mt-4 text-center">
+            <p className="text-sm text-gray-600">
+              Don't have an account? <a href="/register" className="text-indigo-600 font-semibold">Register</a>
+            </p>
           </div>
         </div>
       </div>

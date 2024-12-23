@@ -8,6 +8,7 @@ import PostDetails from "../Pages/PostDetails";
 import Login from "../Pages/Login";
 import Register from "../Pages/Register";
 import NotFoundPage from "../Common/NotFoundPage";
+import PrivateRoute from "../PrivateRoute/PrivateRoute";
 
 
 const router = createBrowserRouter([
@@ -22,7 +23,7 @@ const router = createBrowserRouter([
             },
             {
                 path: '/addPost',
-                element: <AddPost></AddPost>
+                element: <PrivateRoute><AddPost></AddPost></PrivateRoute>
             },
             {
                 path: '/allPosts',
@@ -30,11 +31,11 @@ const router = createBrowserRouter([
             },
             {
                 path: '/managePost',
-                element: <ManagePosts></ManagePosts>
+                element: <PrivateRoute><ManagePosts></ManagePosts></PrivateRoute>
             },
             {
                 path: '/postDetails',
-                element: <PostDetails></PostDetails>
+                element: <PrivateRoute><PostDetails></PostDetails></PrivateRoute>
             },
             {
                 path: '/register',

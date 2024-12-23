@@ -49,7 +49,7 @@ const BannerSlider = () => {
               className="w-full h-full object-cover"
             />
             <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent flex flex-col items-center justify-center text-center">
-              <h2 className="text-5xl md:text-6xl font-extrabold text-white mb-4 drop-shadow-2xl">
+              <h2 className="text-2xl md:text-3xl font-extrabold text-white mb-4 drop-shadow-2xl">
                 {banner.title}
               </h2>
               <p className="text-lg md:text-2xl text-gray-300 max-w-2xl px-6 leading-relaxed">

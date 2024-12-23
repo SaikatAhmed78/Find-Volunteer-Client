@@ -9,8 +9,11 @@ import {
   updateProfile 
 } from 'firebase/auth';
 import auth from '../Firebase/firebase.init';
+import AuthContext from '../Context/AuthContext';
 
-export const AuthContext = createContext(null);
+
+
+
 
 const googleProvider = new GoogleAuthProvider();
 
@@ -65,6 +68,7 @@ const AuthProvider = ({ children }) => {
     signInWithGoogle,
     logout,
     updateUserProfile,
+    
   };
 
   return (
