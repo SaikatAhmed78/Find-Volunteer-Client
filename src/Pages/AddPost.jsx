@@ -43,16 +43,15 @@ const AddPost = () => {
     };
 
     try {
-    await axios.post('http://localhost:5000/add-volunteer', postData);
-        Swal.fire({
-          title: "Success!",
-          text: "Volunteer need post has been added successfully.",
-          icon: "success",
-          confirmButtonText: "OK",
-        });
-        form.reset();
-        setStartDate(null);
-     
+      await axios.post('http://localhost:5000/add-volunteer', postData);
+      Swal.fire({
+        title: "Success!",
+        text: "Volunteer need post has been added successfully.",
+        icon: "success",
+        confirmButtonText: "OK",
+      });
+      form.reset();
+      setStartDate(null);
     } catch (error) {
       Swal.fire({
         title: "Error!",
@@ -67,30 +66,89 @@ const AddPost = () => {
     <div className="container mx-auto px-4 py-8">
       <h2 className="text-2xl font-bold mb-4 text-center">Add Volunteer Need Post</h2>
       <form onSubmit={handlePost} className="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4">
-        <div className="mb-4">
-          <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="thumbnail">
-            Thumbnail
-          </label>
-          <input
-            className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-            id="thumbnail"
-            type="text"
-            placeholder="Thumbnail URL"
-            name="thumbnail"
-          />
+        <div className="flex flex-wrap -mx-3 mb-4">
+          <div className="w-full md:w-1/2 px-3">
+            <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="thumbnail">
+              Thumbnail
+            </label>
+            <input
+              className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+              id="thumbnail"
+              type="text"
+              placeholder="Thumbnail URL"
+              name="thumbnail"
+            />
+          </div>
+          <div className="w-full md:w-1/2 px-3">
+            <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="postTitle">
+              Post Title
+            </label>
+            <input
+              className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+              id="postTitle"
+              type="text"
+              placeholder="Post Title"
+              name="postTitle"
+            />
+          </div>
         </div>
-        <div className="mb-4">
-          <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="postTitle">
-            Post Title
-          </label>
-          <input
-            className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-            id="postTitle"
-            type="text"
-            placeholder="Post Title"
-            name="postTitle"
-          />
+
+        <div className="flex flex-wrap -mx-3 mb-4">
+          <div className="w-full md:w-1/2 px-3">
+            <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="category">
+              Category
+            </label>
+            <select
+              className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+              id="category"
+              name="category"
+            >
+              <option value="healthcare">Healthcare</option>
+              <option value="education">Education</option>
+              <option value="social_service">Social Service</option>
+              <option value="animal_welfare">Animal Welfare</option>
+            </select>
+          </div>
+          <div className="w-full md:w-1/2 px-3">
+            <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="location">
+              Location
+            </label>
+            <input
+              className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+              id="location"
+              type="text"
+              placeholder="Location"
+              name="location"
+            />
+          </div>
         </div>
+
+        <div className="flex flex-wrap -mx-3 mb-4">
+          <div className="w-full md:w-1/2 px-3">
+            <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="volunteersNeeded">
+              No. of Volunteers Needed
+            </label>
+            <input
+              className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+              id="volunteersNeeded"
+              type="number"
+              placeholder="No. of Volunteers Needed"
+              name="volunteersNeeded"
+            />
+          </div>
+          <div className="w-full md:w-1/2 px-3">
+            <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="deadline">
+              Deadline
+            </label>
+            <ReactDatePicker
+              className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+              placeholderText="Select date"
+              selected={startDate}
+              onChange={(date) => setStartDate(date)}
+            />
+          </div>
+        </div>
+
         <div className="mb-4">
           <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="description">
             Description
@@ -102,56 +160,7 @@ const AddPost = () => {
             name="description"
           />
         </div>
-        <div className="mb-4">
-          <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="category">
-            Category
-          </label>
-          <select
-            className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-            id="category"
-            name="category"
-          >
-            <option value="healthcare">Healthcare</option>
-            <option value="education">Education</option>
-            <option value="social_service">Social Service</option>
-            <option value="animal_welfare">Animal Welfare</option>
-          </select>
-        </div>
-        <div className="mb-4">
-          <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="location">
-            Location
-          </label>
-          <input
-            className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-            id="location"
-            type="text"
-            placeholder="Location"
-            name="location"
-          />
-        </div>
-        <div className="mb-4">
-          <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="volunteersNeeded">
-            No. of Volunteers Needed
-          </label>
-          <input
-            className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-            id="volunteersNeeded"
-            type="number"
-            placeholder="No. of Volunteers Needed"
-            name="volunteersNeeded"
-          />
-        </div>
-        <div className="mb-4">
-          <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="deadline">
-            Deadline
-          </label>
-          <ReactDatePicker
-            className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-            placeholderText="Select date"
-            selected={startDate}
-            onChange={(date) => setStartDate(date)}
-          />
-        </div>
+
         <div className="mb-4">
           <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="organizerName">
             Organizer Name
@@ -166,6 +175,7 @@ const AddPost = () => {
             value={user.displayName}
           />
         </div>
+
         <div className="mb-4">
           <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="organizerEmail">
             Organizer Email
@@ -180,6 +190,7 @@ const AddPost = () => {
             value={user.email}
           />
         </div>
+
         <div className="flex items-center justify-between">
           <button
             className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"

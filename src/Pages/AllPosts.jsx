@@ -41,7 +41,7 @@ const AllPosts = () => {
             <p className="text-gray-700 mb-2">Category: {post.category}</p>
             <p className="text-gray-700 mb-2">Location: {post.location}</p>
             <p className="text-gray-700 mb-2">Volunteers Needed: {post.volunteersNeeded}</p>
-            <Link to={`/post/${post._id}`} className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full inline-block mt-4">
+            <Link to={`/postDetails/${post._id}`} className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full inline-block mt-4">
               View Details
             </Link>
           </div>

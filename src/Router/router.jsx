@@ -5,10 +5,12 @@ import AllPosts from "../Pages/AllPosts";
 import AddPost from "../Pages/AddPost";
 import ManagePosts from "../Pages/ManagePosts";
 import PostDetails from "../Pages/PostDetails";
-import Login from "../Pages/Login";
 import Register from "../Pages/Register";
 import NotFoundPage from "../Common/NotFoundPage";
 import PrivateRoute from "../PrivateRoute/PrivateRoute";
+import Login from "../Pages/Login";
+import RequestVolunteer from "../Pages/RequestVolunteer ";
+
 
 
 const router = createBrowserRouter([
@@ -36,6 +38,10 @@ const router = createBrowserRouter([
             {
                 path: '/postDetails/:id',
                 element: <PrivateRoute><PostDetails></PostDetails></PrivateRoute>
+            },
+            {
+                path: '/request-volunteer/:id',
+                element: <PrivateRoute><RequestVolunteer></RequestVolunteer></PrivateRoute>
             },
             {
                 path: '/register',

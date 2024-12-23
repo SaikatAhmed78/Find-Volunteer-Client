@@ -32,30 +32,8 @@ const PostDetails = () => {
     }
   };
 
-  const handleBeVolunteer = async () => {
-    if (!user) {
-      navigate('/login');
-      return;
-    }
-
-    const result = await Swal.fire({
-      title: 'Are you sure?',
-      text: 'Do you want to volunteer for this event?',
-      icon: 'question',
-      showCancelButton: true,
-      confirmButtonColor: '#3085d6',
-      cancelButtonColor: '#d33',
-      confirmButtonText: 'Yes, Volunteer!',
-    });
-
-    if (result.isConfirmed) {
-      Swal.fire({
-        title: 'Success!',
-        text: 'You have volunteered successfully!',
-        icon: 'success',
-        confirmButtonText: 'OK',
-      });
-    }
+  const handleBeVolunteer = (id) => {
+    navigate(`/request-volunteer/${id}`, { state: { post } });
   };
 
   if (loading) {
@@ -116,7 +94,7 @@ const PostDetails = () => {
             <motion.button
               whileTap={{ scale: 0.95 }}
               whileHover={{ scale: 1.05 }}
-              onClick={handleBeVolunteer}
+              onClick={()=>handleBeVolunteer(post._id)}
               className="bg-indigo-600 hover:bg-indigo-700 text-white font-bold py-3 px-6 rounded-full transition-all duration-300 shadow-md"
             >
               Be a Volunteer

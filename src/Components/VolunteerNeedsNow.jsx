@@ -20,7 +20,7 @@ const VolunteerNeedsNow = () => {
   };
 
   const handleViewAll = () => {
-    navigate('/allosts');
+    navigate('/allPosts');
   };
 
   return (
