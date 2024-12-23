@@ -1,17 +1,18 @@
 import React, { useContext } from 'react';
 import { FaUser, FaEnvelope, FaLock, FaImage } from 'react-icons/fa';
 import Lottie from 'lottie-react';
-import animationData from '../../src/assets/lotte/register - 1733913622717.json';
-// import AuthContext from '../Contexts/AuthContext';
 import Swal from 'sweetalert2';
+import animationData from '../../src/assets/lotte/register - 1733913622717.json';
+import AuthContext from '../Context/AuthContext';
 import SocialLogin from '../Common/SocialLogin';
-
+import { useNavigate } from 'react-router-dom';
 
 
 const Register = () => {
-//   const { creatUser } = useContext(AuthContext);
+  const { createUser } = useContext(AuthContext);
+  const navigate = useNavigate()
 
-  const handleRegister = (e) => {
+  const handleRegister = async (e) => {
     e.preventDefault();
     const form = e.target;
     const name = form.name.value;
@@ -19,7 +20,7 @@ const Register = () => {
     const password = form.password.value;
     const photoUrl = form.photoUrl.value;
 
-    if (!name || !email || !password) {
+    if (!name || !email || !password || !photoUrl) {
       Swal.fire({
         title: 'Error!',
         text: 'All fields are required!',
@@ -29,27 +30,36 @@ const Register = () => {
       return;
     }
 
-    const passwordRegex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/;
+    const passwordRegex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[A-Za-z\d@$!%*?&]{8,}$/;
     if (!passwordRegex.test(password)) {
       Swal.fire({
         title: 'Invalid Password!',
-        text: 'Password must be at least 8 characters long, contain at least one uppercase letter, one lowercase letter, one number, and one special character.',
+        text: 'Password must be at least 8 characters long, contain at least one uppercase letter, one lowercase letter, and one number.',
         icon: 'error',
         confirmButtonText: 'OK',
       });
       return;
     }
 
-    creatUser(email, password)
-      .then((result) => {
-        Swal.fire({
-          title: 'Success!',
-          text: 'Account created successfully!',
-          icon: 'success',
-          confirmButtonText: 'OK',
-        });
-      })
-    
+    try {
+      const result = await createUser(email, password);
+      Swal.fire({
+        title: 'Success!',
+        text: 'Account created successfully!',
+        icon: 'success',
+        confirmButtonText: 'OK',
+      });
+      form.reset();
+      navigate('/')
+
+    } catch (error) {
+      Swal.fire({
+        title: 'Error!',
+        text: error.message,
+        icon: 'error',
+        confirmButtonText: 'OK',
+      });
+    }
   };
 
   return (
@@ -104,7 +114,6 @@ const Register = () => {
                 className="pl-10 pr-4 py-3 w-full border-2 border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500"
               />
             </div>
-            
             <button
               type="submit"
               className="w-full py-3 bg-indigo-600 text-white font-semibold rounded-lg hover:bg-indigo-700 transition duration-300"
@@ -114,6 +123,11 @@ const Register = () => {
           </form>
           <div className="mt-6">
             <SocialLogin />
+          </div>
+          <div className="mt-4 text-center">
+            <p className="text-sm text-gray-600">
+              Already have an account? <a href="/login" className="text-indigo-600 font-semibold">Sign In</a>
+            </p>
           </div>
         </div>
       </div>
