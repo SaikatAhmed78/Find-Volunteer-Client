@@ -18,7 +18,7 @@ const Navbar = () => {
   }, [user, logout, navigate]);
 
   return (
-    <div className="navbar bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 shadow-xl dark:bg-gray-900">
+    <div className="navbar mb-5 bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 shadow-xl dark:bg-gray-900">
       <div className="flex-1">
         <Link to="/" className="flex items-center text-white text-3xl font-extrabold">
           <img src={Logo} alt="Logo" className="w-12 h-12 rounded-full mr-2" />

@@ -1,14 +1,16 @@
 import React from 'react';
 import BannerSlider from '../Components/BannerSlider';
 import EventHighlights from '../Components/EventHighlights';
-import TestimonialsCarousel from '../Components/TestimonialsCarousel';
+import VolunteerNeedsNow from '../Components/VolunteerNeedsNow';
+import TestimonialsStatic from '../Components/TestimonialsStatic';
 
 const Home = () => {
     return (
         <div>
             <BannerSlider></BannerSlider>
+            <VolunteerNeedsNow></VolunteerNeedsNow>
             <EventHighlights></EventHighlights>
-            <TestimonialsCarousel></TestimonialsCarousel>
+            <TestimonialsStatic></TestimonialsStatic>
         </div>
     );
 };
