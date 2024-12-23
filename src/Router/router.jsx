@@ -34,7 +34,7 @@ const router = createBrowserRouter([
                 element: <PrivateRoute><ManagePosts></ManagePosts></PrivateRoute>
             },
             {
-                path: '/postDetails',
+                path: '/postDetails/:id',
                 element: <PrivateRoute><PostDetails></PostDetails></PrivateRoute>
             },
             {

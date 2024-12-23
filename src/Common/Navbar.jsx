@@ -9,7 +9,6 @@ const Navbar = () => {
   const { user, logout } = useContext(AuthContext);
   const navigate = useNavigate();
 
- 
   useEffect(() => {
     if (!user && localStorage.getItem('user')) {
       logout();  
@@ -20,33 +19,28 @@ const Navbar = () => {
   return (
     <div className="navbar mb-5 bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 shadow-xl dark:bg-gray-900">
       <div className="flex-1">
-        <Link to="/" className="flex items-center text-white text-3xl font-extrabold">
+        <Link to="/" className="flex items-center text-white text-3xl font-extrabold dark:text-gray-200">
           <img src={Logo} alt="Logo" className="w-12 h-12 rounded-full mr-2" />
           Be The Change
         </Link>
       </div>
       <div className="flex-none hidden md:flex items-center space-x-6">
-        <Link to="/" className="flex items-center text-white text-lg font-semibold hover:scale-105 transition-all">
+        <Link to="/" className="flex items-center text-white text-lg font-semibold hover:scale-105 transition-all dark:text-gray-200 dark:hover:text-gray-400">
           <FaHome className="mr-2" /> Home
         </Link>
-        <Link to="/allPosts" className="flex items-center text-white text-lg font-semibold hover:scale-105 transition-all">
+        <Link to="/allPosts" className="flex items-center text-white text-lg font-semibold hover:scale-105 transition-all dark:text-gray-200 dark:hover:text-gray-400">
           <FaClipboardList className="mr-2" /> All Posts
         </Link>
         {user ? (
           <div className="dropdown dropdown-end">
             <div tabIndex={0} className="avatar cursor-pointer">
               <div className="w-12 rounded-full ring ring-primary ring-offset-base-100 ring-offset-2">
-                <img src={user?.photoURL} alt="User Avatar" />
+                <img src={user?.photoURL} alt="User Avatar" className="w-full h-full rounded-full"/>
               </div>
             </div>
-            <ul
-              tabIndex={0}
-              className="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 text-white rounded-box w-52 dark:bg-gray-800"
-            >
-              <li>
-                <span className="justify-between font-semibold text-lg">
-                  {user?.displayName}
-                </span>
+            <ul tabIndex={0} className="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 text-gray-800 rounded-box w-52 dark:bg-gray-800 dark:text-gray-200">
+              <li className="font-semibold text-lg">
+                <span>{user?.displayName}</span>
               </li>
               <li>
                 <Link to="/addPost" className="flex items-center text-sm">
@@ -78,25 +72,22 @@ const Navbar = () => {
 
       <div className="md:hidden flex-none">
         <div className="dropdown dropdown-end">
-          <button tabIndex={0} className="btn btn-ghost text-white text-2xl">☰</button>
-          <ul
-            tabIndex={0}
-            className="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52 dark:bg-gray-800"
-          >
-            <li><Link to="/" className="flex items-center"><FaHome className="mr-2" /> Home</Link></li>
-            <li><Link to="/allPosts" className="flex items-center"><FaClipboardList className="mr-2" /> All Posts</Link></li>
+          <button tabIndex={0} className="btn btn-ghost text-white text-2xl dark:text-gray-200">☰</button>
+          <ul tabIndex={0} className="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow rounded-box w-52 bg-base-100 dark:bg-gray-800">
+            <li><Link to="/" className="flex items-center dark:text-gray-200"><FaHome className="mr-2" /> Home</Link></li>
+            <li><Link to="/allPosts" className="flex items-center dark:text-gray-200"><FaClipboardList className="mr-2" /> All Posts</Link></li>
             {user && (
               <>
-                <li><Link to="/addPost" className="flex items-center"><FaPlus className="mr-2" /> Add a New Post</Link></li>
-                <li><Link to="/managePost" className="flex items-center"><FaListAlt className="mr-2" /> Manage Your Posts</Link></li>
+                <li><Link to="/addPost" className="flex items-center dark:text-gray-200"><FaPlus className="mr-2" /> Add a New Post</Link></li>
+                <li><Link to="/managePost" className="flex items-center dark:text-gray-200"><FaListAlt className="mr-2" /> Manage Your Posts</Link></li>
                 <li>
-                  <button onClick={logout} className="flex items-center"><FaSignOutAlt className="mr-2" /> Logout</button>
+                  <button onClick={logout} className="flex items-center dark:text-gray-200"><FaSignOutAlt className="mr-2" /> Logout</button>
                 </li>
               </>
             )}
             {!user && (
               <li>
-                <Link to="/login" className="flex items-center"><FaSignInAlt className="mr-2" /> Login</Link>
+                <Link to="/login" className="flex items-center dark:text-gray-200"><FaSignInAlt className="mr-2" /> Login</Link>
               </li>
             )}
           </ul>

@@ -20,13 +20,13 @@ const VolunteerNeedsNow = () => {
   };
 
   const handleViewAll = () => {
-    navigate('/allPosts');
+    navigate('/allosts');
   };
 
   return (
     <div className="container mx-auto px-4 py-8">
-      <h2 className="text-3xl font-extrabold mb-6 text-center text-gray-800">Volunteer Needs Now</h2>
-      <p className="text-center text-gray-600 mb-8 max-w-2xl mx-auto">
+      <h2 className="text-3xl font-extrabold mb-6 text-center text-lime-500">Volunteer Needs Now</h2>
+      <p className="text-center text-blue-600 mb-8 max-w-2xl mx-auto">
         Explore the most urgent volunteer opportunities that need your help today. Make a difference by contributing your time and skills.
       </p>
       <div className="grid gap-6 grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
@@ -37,7 +37,7 @@ const VolunteerNeedsNow = () => {
               <h3 className="text-2xl font-bold mb-2 text-gray-900">{post.postTitle}</h3>
               <p className="text-gray-600 mb-1">Category: <span className="text-blue-500">{post.category}</span></p>
               <p className="text-gray-600">Deadline: {new Date(post.deadline).toLocaleDateString()}</p>
-              <Link to={`/post/${post._id}`} className="block bg-blue-600 hover:bg-blue-800 text-white font-semibold text-center py-2 px-4 rounded-full mt-4">
+              <Link to={`/postDetails/${post._id}`} className="block bg-blue-600 hover:bg-blue-800 text-white font-semibold text-center py-2 px-4 rounded-full mt-4">
                 View Details
               </Link>
             </div>

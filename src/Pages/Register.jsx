@@ -9,7 +9,7 @@ import { useNavigate } from 'react-router-dom';
 
 
 const Register = () => {
-  const { createUser } = useContext(AuthContext);
+  const { createUser, updateUserProfile } = useContext(AuthContext);
   const navigate = useNavigate()
 
   const handleRegister = async (e) => {
@@ -43,6 +43,7 @@ const Register = () => {
 
     try {
       const result = await createUser(email, password);
+      await updateUserProfile(  name,  photoUrl );
       Swal.fire({
         title: 'Success!',
         text: 'Account created successfully!',
