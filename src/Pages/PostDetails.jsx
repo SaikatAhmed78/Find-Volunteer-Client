@@ -21,7 +21,7 @@ const PostDetails = () => {
 
   const fetchPostDetails = async () => {
     try {
-      const { data } = await axios.get(`http://localhost:5000/volunteer-needs/${id}`);
+      const { data } = await axios.get(`https://be-the-change-mu.vercel.app/volunteer-needs/${id}`);
       setPost(data);
     } catch (error) {
       Swal.fire({

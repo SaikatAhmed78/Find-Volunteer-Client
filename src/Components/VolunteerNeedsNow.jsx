@@ -12,7 +12,7 @@ const VolunteerNeedsNow = () => {
 
   const fetchVolunteerNeeds = async () => {
     try {
-      const response = await axios.get('http://localhost:5000/volunteer-needs-now');
+      const response = await axios.get('https://be-the-change-mu.vercel.app/volunteer-needs-now');
       setPosts(response.data);
     } catch (error) {
       console.error('Failed to fetch volunteer needs', error);

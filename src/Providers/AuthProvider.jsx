@@ -55,7 +55,7 @@ const AuthProvider = ({ children }) => {
       if(currentUser?.email){
         setUser(currentUser);
         
-        const {data} = await axios.post('http://localhost:5000/jwt', {
+        const {data} = await axios.post('https://be-the-change-mu.vercel.app/jwt', {
           email : currentUser?.email
         },
         {
@@ -78,7 +78,7 @@ const AuthProvider = ({ children }) => {
 
         try {
           const { data } = await axios.post(
-            'http://localhost:5000/jwt',
+            'https://be-the-change-mu.vercel.app/jwt',
             { email: currentUser?.email },
             { withCredentials: true }
           );
@@ -89,7 +89,7 @@ const AuthProvider = ({ children }) => {
       }else{
         setUser(currentUser);
         const { data } = await axios.get(
-          'http://localhost:5000/logout',
+          'https://be-the-change-mu.vercel.app/logout',
           { withCredentials: true }
         );
       }

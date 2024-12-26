@@ -15,7 +15,7 @@ const AllPosts = () => {
 
   const fetchPosts = async () => {
     try {
-      const response = await axios.get('http://localhost:5000/volunteer-needss', {
+      const response = await axios.get('https://be-the-change-mu.vercel.app/volunteer-needss', {
         params: { title: search }
       });
       setPosts(response.data);

@@ -21,7 +21,7 @@ const UpdatePost = () => {
   });
 
   useEffect(() => {
-    axios.get(`http://localhost:5000/volunteer-needs/${id}`)
+    axios.get(`https://be-the-change-mu.vercel.app/volunteer-needs/${id}`)
       .then(res => {
         const { thumbnail, postTitle, description, category, location, volunteersNeeded, deadline, organizerName, organizerEmail } = res.data;
         setPostData({
@@ -49,7 +49,7 @@ const UpdatePost = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    axios.put(`http://localhost:5000/volunteer-needs/${id}`, postData)
+    axios.put(`https://be-the-change-mu.vercel.app/volunteer-needs/${id}`, postData)
       .then(() => {
         Swal.fire({
           title: 'Success!',

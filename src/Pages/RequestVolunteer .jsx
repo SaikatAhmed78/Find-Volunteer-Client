@@ -42,7 +42,7 @@ const RequestVolunteer = () => {
     };
 
     try {
-      await axios.post('http://localhost:5000/request-volunteer', requestData);
+      await axios.post('https://be-the-change-mu.vercel.app/request-volunteer', requestData);
       Swal.fire('Success', 'Your request has been submitted!', 'success');
       navigate('/');
     } catch (error) {

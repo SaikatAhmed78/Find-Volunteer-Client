@@ -15,7 +15,7 @@ const ManagePosts = () => {
   useEffect(() => {
     const fetchVolunteerNeedPosts = async () => {
       try {
-        const response = await axios.get(`http://localhost:5000/volunteer-needs?organizer=${user.email}`);
+        const response = await axios.get(`https://be-the-change-mu.vercel.app/volunteer-needs?organizer=${user.email}`);
         setVolunteerNeedPosts(response.data);
       } catch (error) {
         console.error('Error fetching posts:', error);
@@ -27,7 +27,7 @@ const ManagePosts = () => {
   useEffect(() => {
     const fetchVolunteerRequestPosts = async () => {
       try {
-        const response = await axios.get(`http://localhost:5000/volunteer-requests?volunteerEmail=${user.email}`);
+        const response = await axios.get(`https://be-the-change-mu.vercel.app/volunteer-requests?volunteerEmail=${user.email}`);
         setVolunteerRequestPosts(response.data);
       } catch (error) {
         console.error('Error fetching requests:', error);
@@ -47,7 +47,7 @@ const ManagePosts = () => {
     }).then(async (result) => {
       if (result.isConfirmed) {
         try {
-          await axios.delete(`http://localhost:5000/volunteer-needs/${postId}`);
+          await axios.delete(`https://be-the-change-mu.vercel.app/volunteer-needs/${postId}`);
           Swal.fire('Deleted!', 'Your post has been deleted.', 'success');
           setVolunteerNeedPosts(volunteerNeedPosts.filter(post => post._id !== postId));
         } catch (error) {
@@ -68,7 +68,7 @@ const ManagePosts = () => {
     }).then(async (result) => {
       if (result.isConfirmed) {
         try {
-          await axios.delete(`http://localhost:5000/volunteer-requests/${requestId}`);
+          await axios.delete(`https://be-the-change-mu.vercel.app/volunteer-requests/${requestId}`);
           Swal.fire('Cancelled!', 'Your "Be a Volunteer Request" has been cancelled.', 'success');
           setVolunteerRequestPosts(volunteerRequestPosts.filter(request => request._id !== requestId));
         } catch (error) {
