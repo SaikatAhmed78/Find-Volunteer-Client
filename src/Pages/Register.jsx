@@ -6,6 +6,7 @@ import animationData from '../../src/assets/lotte/register - 1733913622717.json'
 import AuthContext from '../Context/AuthContext';
 import SocialLogin from '../Common/SocialLogin';
 import { useNavigate } from 'react-router-dom';
+import { Helmet } from 'react-helmet-async';
 
 
 const Register = () => {
@@ -64,6 +65,11 @@ const Register = () => {
   };
 
   return (
+    
+   <>
+   <Helmet>
+      <title>Register </title>
+      </Helmet>
     <div className="min-h-screen flex items-center justify-center py-6 px-4 sm:px-6 lg:px-8">
       <div className="flex flex-col md:flex-row bg-white shadow-lg rounded-lg max-w-4xl w-full">
         <div className="md:w-1/2 flex items-center justify-center p-4">
@@ -133,6 +139,7 @@ const Register = () => {
         </div>
       </div>
     </div>
+   </>
   );
 };
 

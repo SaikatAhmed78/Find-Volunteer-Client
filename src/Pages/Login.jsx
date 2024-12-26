@@ -10,7 +10,7 @@ import SocialLogin from '../Common/SocialLogin';
 
 
 const Login = () => {
-  const { signInUser } = useContext(AuthContext);
+  const { signInUser, updateUserProfile, user } = useContext(AuthContext);
   const navigate = useNavigate();
 
   const handleSignin = async (e) => {
@@ -31,6 +31,10 @@ const Login = () => {
 
     try {
       const result = await signInUser(email, password);
+      const name = user.name;
+       const photoUrl = user.photoUrl;
+
+       await updateUserProfile(name, photoUrl);
       
       Swal.fire({
         title: 'Success!',

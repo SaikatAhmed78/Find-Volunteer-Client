@@ -1,8 +1,6 @@
-import { createContext, StrictMode } from 'react'
+import {  StrictMode } from 'react'
 import { createRoot } from 'react-dom/client'
 import './index.css'
-
-
 
 
 import {
@@ -11,18 +9,23 @@ import {
 import router from './Router/router';
 import AuthProvider from './Providers/AuthProvider';
 import { ThemeProvider } from './Providers/ThemeProvider';
+import { HelmetProvider } from 'react-helmet-async';
 
 
 
 createRoot(document.getElementById('root')).render(
   <StrictMode>
-  <AuthProvider>
+ <HelmetProvider>
+ <AuthProvider>
 <ThemeProvider>
 <RouterProvider router={router}>
 </RouterProvider>
 </ThemeProvider>
   </AuthProvider>
+ </HelmetProvider>
   </StrictMode>,
-)
+);
+
+
   
 
