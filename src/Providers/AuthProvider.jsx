@@ -10,6 +10,7 @@ import {
 } from 'firebase/auth';
 import auth from '../Firebase/firebase.init';
 import AuthContext from '../Context/AuthContext';
+import axios from 'axios';
 
 
 
@@ -49,12 +50,55 @@ const AuthProvider = ({ children }) => {
   };
 
   useEffect(() => {
-    const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
-      setUser(currentUser);
+    const unsubscribe = onAuthStateChanged(auth, async(currentUser) => {
+      
+      if(currentUser?.email){
+        setUser(currentUser);
+        
+        const {data} = await axios.post('http://localhost:5000/jwt', {
+          email : currentUser?.email
+        },
+        {
+          withCredentials: true,
+        }
+      )
+        console.log(data)
+        
+      }
       setLoading(false);
     });
     return () => {
       unsubscribe();
+    };
+  }, []);
+
+  useEffect(() => {
+    const unsubscribe = onAuthStateChanged(auth, async (currentUser) => {
+      if (currentUser?.email) {
+
+        try {
+          const { data } = await axios.post(
+            'http://localhost:5000/jwt',
+            { email: currentUser?.email },
+            { withCredentials: true }
+          );
+          console.log(data); 
+        } catch (error) {
+          console.error('Error fetching JWT:', error);
+        }
+      }else{
+        setUser(currentUser);
+        const { data } = await axios.get(
+          'http://localhost:5000/logout',
+          { withCredentials: true }
+        );
+      }
+
+      setLoading(false);
+    });
+
+    return () => {
+      unsubscribe(); 
     };
   }, []);
 
