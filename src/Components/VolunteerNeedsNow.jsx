@@ -12,7 +12,7 @@ const VolunteerNeedsNow = () => {
 
   const fetchVolunteerNeeds = async () => {
     try {
-      const response = await axios.get('https://be-the-change-mu.vercel.app/volunteer-needs-now');
+      const response = await axios.get('http://localhost:5000/volunteer-needs-now');
       setPosts(response.data);
     } catch (error) {
       console.error('Failed to fetch volunteer needs', error);
@@ -46,8 +46,8 @@ const VolunteerNeedsNow = () => {
       </div>
       {posts.length > 0 && (
         <div className="text-center mt-12">
-          <button 
-            onClick={handleViewAll} 
+          <button
+            onClick={handleViewAll}
             className="bg-green-500 hover:bg-green-700 text-white font-bold py-3 px-6 rounded-lg shadow-lg">
             View All Posts
           </button>

@@ -21,7 +21,7 @@ const PostDetails = () => {
 
   const fetchPostDetails = async () => {
     try {
-      const { data } = await axios.get(`https://be-the-change-mu.vercel.app/volunteer-needs/${id}`);
+      const { data } = await axios.get(`http://localhost:5000/volunteer-needs/${id}`);
       setPost(data);
     } catch (error) {
       Swal.fire({
@@ -112,11 +112,10 @@ const PostDetails = () => {
               whileTap={{ scale: 0.95 }}
               whileHover={{ scale: 1.05 }}
               onClick={() => handleBeVolunteer(post._id)}
-              className={`${
-                isButtonDisabled
+              className={`${isButtonDisabled
                   ? 'bg-gray-400 cursor-not-allowed'
                   : 'bg-indigo-600 hover:bg-indigo-700'
-              } text-white font-bold py-3 px-6 rounded-full transition-all duration-300 shadow-md`}
+                } text-white font-bold py-3 px-6 rounded-full transition-all duration-300 shadow-md`}
               disabled={isButtonDisabled}
             >
               Be a Volunteer

@@ -1,12 +1,12 @@
 import { createContext, useEffect, useState } from 'react';
-import { 
-  GoogleAuthProvider, 
-  createUserWithEmailAndPassword, 
-  onAuthStateChanged, 
-  signInWithEmailAndPassword, 
-  signInWithPopup, 
-  signOut, 
-  updateProfile 
+import {
+  GoogleAuthProvider,
+  createUserWithEmailAndPassword,
+  onAuthStateChanged,
+  signInWithEmailAndPassword,
+  signInWithPopup,
+  signOut,
+  updateProfile
 } from 'firebase/auth';
 import auth from '../Firebase/firebase.init';
 import AuthContext from '../Context/AuthContext';
@@ -50,20 +50,20 @@ const AuthProvider = ({ children }) => {
   };
 
   useEffect(() => {
-    const unsubscribe = onAuthStateChanged(auth, async(currentUser) => {
-      
-      if(currentUser?.email){
+    const unsubscribe = onAuthStateChanged(auth, async (currentUser) => {
+
+      if (currentUser?.email) {
         setUser(currentUser);
-        
-        const {data} = await axios.post('https://be-the-change-mu.vercel.app/jwt', {
-          email : currentUser?.email
+
+        const { data } = await axios.post('http://localhost:5000/jwt', {
+          email: currentUser?.email
         },
-        {
-          withCredentials: true,
-        }
-      )
+          {
+            withCredentials: true,
+          }
+        )
         console.log(data)
-        
+
       }
       setLoading(false);
     });
@@ -78,18 +78,18 @@ const AuthProvider = ({ children }) => {
 
         try {
           const { data } = await axios.post(
-            'https://be-the-change-mu.vercel.app/jwt',
+            'http://localhost:5000/jwt',
             { email: currentUser?.email },
             { withCredentials: true }
           );
-          console.log(data); 
+          console.log(data);
         } catch (error) {
           console.error('Error fetching JWT:', error);
         }
-      }else{
+      } else {
         setUser(currentUser);
         const { data } = await axios.get(
-          'https://be-the-change-mu.vercel.app/logout',
+          'http://localhost:5000/logout',
           { withCredentials: true }
         );
       }
@@ -98,7 +98,7 @@ const AuthProvider = ({ children }) => {
     });
 
     return () => {
-      unsubscribe(); 
+      unsubscribe();
     };
   }, []);
 
@@ -112,7 +112,7 @@ const AuthProvider = ({ children }) => {
     signInWithGoogle,
     logout,
     updateUserProfile,
-    
+
   };
 
   return (
