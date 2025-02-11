@@ -56,7 +56,7 @@ const RequestVolunteer = () => {
         <title>Request Volunteer</title>
       </Helmet>
       <div
-        className="min-h-screen flex items-center justify-center bg-cover bg-center rounded-e-lg py-12 px-4 xl:px-6 lg:px-8"
+        className="min-h-screen flex items-center justify-center bg-cover bg-center rounded-e-lg py-12 px-4 xl:px-6 lg:px-8 mt-32 rounded-lg"
         style={{ backgroundImage: `url(${backgroundImage})` }}
       >
         <div className="max-w-4xl w-full p-10 rounded-lg shadow-lg">
