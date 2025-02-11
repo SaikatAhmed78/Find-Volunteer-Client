@@ -18,7 +18,7 @@ const Navbar = () => {
   }, [user, logout, navigate]);
 
   return (
-    <div className="navbar bg-gradient-to-r from-indigo-600 via-purple-600 to-pink-600 shadow-xl dark:bg-gray-900 w-full px-4 md:px-6 py-3 mb-4">
+    <div className="navbar bg-gradient-to-r from-indigo-600 via-purple-600 to-pink-600 shadow-xl dark:bg-gray-900 w-full px-4 md:px-6 fixed top-0 left-0 z-50">
       <div className="flex items-center justify-between w-full">
         <Link to="/" className="flex items-center text-white text-2xl font-extrabold dark:text-gray-200">
           <img src={Logo} alt="Logo" className="w-10 h-10 rounded-full mr-2" />
@@ -60,7 +60,7 @@ const Navbar = () => {
         </div>
       </div>
       {menuOpen && (
-        <div className="absolute top-full left-0 w-full bg-gradient-to-r from-indigo-600 via-purple-600 to-pink-600 shadow-xl dark:bg-gray-900 p-4">
+        <div className="absolute top-16 left-0 w-full bg-gradient-to-r from-indigo-600 via-purple-600 to-pink-600 shadow-xl dark:bg-gray-900 p-4 z-50">
           <ul className="flex flex-col space-y-3">
             <li><Link to="/" className="block text-white py-2 text-lg dark:text-gray-200">Home</Link></li>
             <li><Link to="/allPosts" className="block text-white py-2 text-lg dark:text-gray-200">All Posts</Link></li>

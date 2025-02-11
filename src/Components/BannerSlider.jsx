@@ -5,6 +5,7 @@ import 'slick-carousel/slick/slick-theme.css';
 import banner1 from '../../src/assets/banner/ocg-saving-the-ocean-_1j7_atc0z8-unsplash.jpg';
 import banner2 from '../../src/assets/banner/pexels-rdne-6646917.jpg';
 import banner3 from '../../src/assets/banner/pexels-rdne-6647026.jpg';
+import { Link } from 'react-router-dom';
 
 const BannerSlider = () => {
   const settings = {
@@ -39,7 +40,7 @@ const BannerSlider = () => {
   ];
 
   return (
-    <div className="banner-slider h-[600px] mb-10 relative overflow-hidden rounded-lg">
+    <div className="banner-slider h-[600px] mb-10 mt-20 relative overflow-hidden rounded-lg">
       <Slider {...settings}>
         {banners.map((banner, index) => (
           <div key={index} className="h-[600px] relative">
@@ -55,9 +56,12 @@ const BannerSlider = () => {
               <p className="text-lg md:text-2xl text-gray-300 max-w-2xl px-6 leading-relaxed">
                 {banner.subtitle}
               </p>
-              <button className="mt-6 bg-blue-600 hover:bg-blue-700 text-white px-8 py-3 text-lg font-semibold rounded-lg shadow-md transition-all duration-300">
-                Learn More
-              </button>
+
+              <Link to="/aboutUs">
+                <button className="mt-6 bg-blue-600 hover:bg-blue-700 text-white px-8 py-3 text-lg font-semibold rounded-lg shadow-md transition-all duration-300">
+                  Learn More
+                </button>
+              </Link>
             </div>
           </div>
         ))}

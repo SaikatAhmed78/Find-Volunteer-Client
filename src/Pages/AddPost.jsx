@@ -72,7 +72,7 @@ const AddPost = () => {
       <Helmet>
         <title>Add Post</title>
       </Helmet>
-      <div className="container mx-auto px-4 py-8 relative min-h-screen">
+      <div className="container mx-auto px-4 py-8 relative">
         <div
           className="absolute inset-0 bg-cover bg-center"
           style={{
@@ -82,18 +82,18 @@ const AddPost = () => {
           }}>
         </div>
         <div className="absolute inset-0 bg-black bg-opacity-50"></div>
-        <div className="relative z-10 max-w-4xl mx-auto  p-10 rounded-lg shadow-2xl">
+        <div className="relative z-10 max-w-4xl mx-auto p-10 rounded-lg">
           <h2 className="text-3xl font-extrabold mb-6 text-center text-blue-700">Add Volunteer Need Post</h2>
-          <form onSubmit={handlePost} className="grid grid-cols-1 md:grid-cols-2 gap-6">
-            <div>
+          <form onSubmit={handlePost} className="grid grid-cols-1 gap-6 md:grid-cols-2">
+            <div className="col-span-1">
               <label className="block text-gray-800 font-medium mb-2" htmlFor="thumbnail">Thumbnail</label>
               <input className="w-full p-3 border rounded-lg focus:ring-2 focus:ring-blue-500" id="thumbnail" type="text" placeholder="Thumbnail URL" name="thumbnail" />
             </div>
-            <div>
+            <div className="col-span-1">
               <label className="block text-gray-800 font-medium mb-2" htmlFor="postTitle">Post Title</label>
               <input className="w-full p-3 border rounded-lg focus:ring-2 focus:ring-blue-500" id="postTitle" type="text" placeholder="Post Title" name="postTitle" />
             </div>
-            <div>
+            <div className="col-span-1">
               <label className="block text-gray-800 font-medium mb-2" htmlFor="category">Category</label>
               <select className="w-full p-3 border rounded-lg focus:ring-2 focus:ring-blue-500" id="category" name="category">
                 <option value="healthcare">Healthcare</option>
@@ -102,31 +102,32 @@ const AddPost = () => {
                 <option value="animal_welfare">Animal Welfare</option>
               </select>
             </div>
-            <div>
+            <div className="col-span-1">
               <label className="block text-gray-800 font-medium mb-2" htmlFor="location">Location</label>
               <input className="w-full p-3 border rounded-lg focus:ring-2 focus:ring-blue-500" id="location" type="text" placeholder="Location" name="location" />
             </div>
-            <div>
+            <div className="col-span-1">
               <label className="block text-gray-800 font-medium mb-2" htmlFor="volunteersNeeded">No. of Volunteers Needed</label>
               <input className="w-full p-3 border rounded-lg focus:ring-2 focus:ring-blue-500" id="volunteersNeeded" type="number" placeholder="No. of Volunteers Needed" name="volunteersNeeded" />
             </div>
-            <div>
+            <div className="col-span-1">
               <label className="block text-gray-800 font-medium mb-2" htmlFor="deadline">Deadline</label>
               <ReactDatePicker className="w-full p-3 border rounded-lg focus:ring-2 focus:ring-blue-500" placeholderText="Select date" selected={startDate} onChange={(date) => setStartDate(date)} />
             </div>
-            <div className="col-span-2">
+            <div className="col-span-1 md:col-span-2">
               <label className="block text-gray-800 font-medium mb-2" htmlFor="description">Description</label>
               <textarea className="w-full p-3 border rounded-lg focus:ring-2 focus:ring-blue-500" id="description" placeholder="Description" name="description"></textarea>
             </div>
-            <div className="col-span-2 flex justify-end">
-              <button className="bg-blue-600 hover:bg-blue-800 text-white font-bold py-3 px-6 rounded-lg" type="submit">Add Post</button>
+            <div className="col-span-1 md:col-span-2 flex justify-end">
+
+              <button className="bg-gradient-to-r from-blue-500 to-purple-600 hover:from-purple-600 hover:to-blue-500 text-white font-bold py-3 px-6 w-full rounded-lg shadow-lg transform hover:scale-105 transition-transform duration-300 ease-in-out" type="submit">Add Post</button>
+
             </div>
           </form>
         </div>
       </div>
     </>
   );
-
 };
 
 export default AddPost;

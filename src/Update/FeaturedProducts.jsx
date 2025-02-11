@@ -35,8 +35,10 @@ const FeaturedProducts = () => {
     return (
         <div className="py-16 mt-4 mb-10">
             <div className="container mx-auto text-center">
-                <h2 className="text-3xl font-bold text-blue-600 mb-6">Featured Products & Services</h2>
-                <p className="text-xl text-gray-700 mb-12">Discover the most impactful volunteer opportunities we are offering right now.</p>
+                <h2 className="text-4xl font-extrabold uppercase text-lime-500 mb-3 tracking-wide
+                
+                ">Featured Products & Services</h2>
+                <p className="text-xl text-blue-600 mb-12">Discover the most impactful volunteer opportunities we are offering right now.</p>
 
                 <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
                     {products.map((product) => (

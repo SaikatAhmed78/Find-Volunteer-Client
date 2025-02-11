@@ -6,7 +6,7 @@ import uideginer from '../assets/update/uideginer.jpg'
 
 const AboutUs = () => {
     return (
-        <div className="bg-gray-900 text-white mb-4">
+        <div className="bg-gray-900 text-white mb-4 rounded-lg">
 
             <section className="flex flex-col items-center py-20">
                 <h1 className="text-4xl font-bold text-center mt-6">

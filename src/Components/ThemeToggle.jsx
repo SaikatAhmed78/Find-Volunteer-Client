@@ -8,7 +8,7 @@ const ThemeToggle = () => {
   return (
     <button
       onClick={toggleTheme}
-      className="p-2 rounded-full focus:outline-none focus:ring-2"
+      className="p-2 rounded-full hidden md:block focus:outline-none focus:ring-2"
       aria-label="Toggle Theme"
     >
       {theme === 'dark' ? <FaSun className="text-yellow-500" /> : <FaMoon className="text-gray-700" />}

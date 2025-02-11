@@ -25,7 +25,7 @@ const VolunteerNeedsNow = () => {
 
   return (
     <div className="container mx-auto px-4 py-8">
-      <h2 className="text-3xl font-extrabold mb-6 text-center text-lime-500">Volunteer Needs Now</h2>
+      <h2 className="text-4xl font-extrabold mb-6 text-center text-lime-500 uppercase tracking-wide">Volunteer Needs Now</h2>
       <p className="text-center text-blue-600 mb-8 max-w-2xl mx-auto">
         Explore the most urgent volunteer opportunities that need your help today. Make a difference by contributing your time and skills.
       </p>
