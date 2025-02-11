@@ -33,7 +33,7 @@ const AllPosts = () => {
       <Helmet>
         <title>All Post </title>
       </Helmet>
-      <div className="container mx-auto px-4 py-8">
+      <div className="container mx-auto px-4 py-8 mt-32">
         <h2 className="text-4xl font-extrabold mb-6 text-blue-600 text-center">All Volunteer Need Posts</h2>
         <div className="mb-6 flex justify-between items-center">
           <input

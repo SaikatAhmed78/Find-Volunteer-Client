@@ -1,5 +1,5 @@
 import { Link, useNavigate } from 'react-router-dom';
-import { FaSignOutAlt, FaSignInAlt, FaPlus, FaListAlt, FaHome, FaClipboardList, FaBars } from 'react-icons/fa';
+import { FaSignOutAlt, FaSignInAlt, FaPlus, FaListAlt, FaHome, FaClipboardList, FaBars, FaInfoCircle } from 'react-icons/fa';
 import { useContext, useEffect, useState } from 'react';
 import Logo from '../../src/assets/logo/360_F_272398712_z28EMWLbM9Y8zojg51tLZo4D8Ju3R7EG.jpg';
 import ThemeToggle from '../Components/ThemeToggle';
@@ -25,9 +25,15 @@ const Navbar = () => {
           <span className="text-3xl font-bold tracking-wide bg-clip-text text-transparent bg-gradient-to-r from-yellow-300 to-pink-400 drop-shadow-lg">Be The Change</span>
         </Link>
         <div className="hidden md:flex items-center space-x-6">
-          <Link to="/" className="text-white text-lg font-semibold hover:scale-105 transition-all dark:text-gray-200">Home</Link>
-          <Link to="/allPosts" className="text-white text-lg font-semibold hover:scale-105 transition-all dark:text-gray-200">All Posts</Link>
-          <Link to="/aboutUs" className="text-white text-lg font-semibold hover:scale-105 transition-all dark:text-gray-200">About Us</Link>
+          <Link to="/" className="text-white text-lg font-semibold hover:scale-105 transition-all dark:text-gray-200 flex items-center">
+            <FaHome className="mr-2" /> Home
+          </Link>
+          <Link to="/allPosts" className="text-white text-lg font-semibold hover:scale-105 transition-all dark:text-gray-200 flex items-center">
+            <FaListAlt className="mr-2" /> All Posts
+          </Link>
+          <Link to="/aboutUs" className="text-white text-lg font-semibold hover:scale-105 transition-all dark:text-gray-200 flex items-center">
+            <FaInfoCircle className="mr-2" /> About Us
+          </Link>
           {user ? (
             <div className="dropdown dropdown-end">
               <div tabIndex={0} className="avatar cursor-pointer">
@@ -39,10 +45,20 @@ const Navbar = () => {
                 <li className="font-semibold text-lg">
                   <span>{user?.displayName}</span>
                 </li>
-                <li><Link to="/addPost">Add a New Post</Link></li>
-                <li><Link to="/managePost">Manage Your Posts</Link></li>
                 <li>
-                  <button onClick={logout} className="text-sm">Logout</button>
+                  <Link to="/addPost" className="flex items-center">
+                    <FaPlus className="mr-2" /> Add a New Post
+                  </Link>
+                </li>
+                <li>
+                  <Link to="/managePost" className="flex items-center">
+                    <FaClipboardList className="mr-2" /> Manage Your Posts
+                  </Link>
+                </li>
+                <li>
+                  <button onClick={logout} className="text-sm flex items-center">
+                    <FaSignOutAlt className="mr-2" /> Logout
+                  </button>
                 </li>
               </ul>
             </div>
@@ -62,20 +78,44 @@ const Navbar = () => {
       {menuOpen && (
         <div className="absolute top-16 left-0 w-full bg-gradient-to-r from-indigo-600 via-purple-600 to-pink-600 shadow-xl dark:bg-gray-900 p-4 z-50">
           <ul className="flex flex-col space-y-3">
-            <li><Link to="/" className="block text-white py-2 text-lg dark:text-gray-200">Home</Link></li>
-            <li><Link to="/allPosts" className="block text-white py-2 text-lg dark:text-gray-200">All Posts</Link></li>
-            <li><Link to="/aboutUs" className="block text-white py-2 text-lg dark:text-gray-200">About Us</Link></li>
+            <li>
+              <Link to="/" className="text-white py-2 text-lg dark:text-gray-200 flex items-center">
+                <FaHome className="mr-2" /> Home
+              </Link>
+            </li>
+            <li>
+              <Link to="/allPosts" className="text-white py-2 text-lg dark:text-gray-200 flex items-center">
+                <FaListAlt className="mr-2" /> All Posts
+              </Link>
+            </li>
+            <li>
+              <Link to="/aboutUs" className="text-white py-2 text-lg dark:text-gray-200 flex items-center">
+                <FaInfoCircle className="mr-2" /> About Us
+              </Link>
+            </li>
             {user ? (
               <>
-                <li><Link to="/addPost" className="block text-white py-2 text-lg dark:text-gray-200">Add a New Post</Link></li>
-                <li><Link to="/managePost" className="block text-white py-2 text-lg dark:text-gray-200">Manage Your Posts</Link></li>
                 <li>
-                  <button onClick={logout} className="block text-white py-2 text-lg dark:text-gray-200">Logout</button>
+                  <Link to="/addPost" className="text-white py-2 text-lg dark:text-gray-200 flex items-center">
+                    <FaPlus className="mr-2" /> Add a New Post
+                  </Link>
+                </li>
+                <li>
+                  <Link to="/managePost" className="text-white py-2 text-lg dark:text-gray-200 flex items-center">
+                    <FaClipboardList className="mr-2" /> Manage Your Posts
+                  </Link>
+                </li>
+                <li>
+                  <button onClick={logout} className="text-white py-2 text-lg dark:text-gray-200 flex items-center">
+                    <FaSignOutAlt className="mr-2" /> Logout
+                  </button>
                 </li>
               </>
             ) : (
               <li>
-                <Link to="/login" className="block text-white py-2 text-lg dark:text-gray-200">Login</Link>
+                <Link to="/login" className="text-white py-2 text-lg dark:text-gray-200 flex items-center">
+                  <FaSignInAlt className="mr-2" /> Login
+                </Link>
               </li>
             )}
           </ul>

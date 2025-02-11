@@ -72,7 +72,7 @@ const AddPost = () => {
       <Helmet>
         <title>Add Post</title>
       </Helmet>
-      <div className="container mx-auto px-4 py-8 relative">
+      <div className="container mx-auto px-4 py-8 relative mt-32">
         <div
           className="absolute inset-0 bg-cover bg-center"
           style={{

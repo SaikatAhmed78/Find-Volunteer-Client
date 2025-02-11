@@ -51,7 +51,7 @@ const PostDetails = () => {
 
   if (loading) {
     return (
-      <div className="flex justify-center items-center h-screen">
+      <div className="flex justify-center items-center mt-32">
         <div className="animate-spin rounded-full h-32 w-32 border-t-4 border-indigo-500"></div>
       </div>
     );
