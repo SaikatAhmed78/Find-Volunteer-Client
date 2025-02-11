@@ -11,7 +11,7 @@ import PrivateRoute from "../PrivateRoute/PrivateRoute";
 import Login from "../Pages/Login";
 import RequestVolunteer from "../Pages/RequestVolunteer ";
 import UpdatePost from "../Pages/UpdatePost";
-
+import AboutUs from "../Pages/AboutUs";
 
 
 
@@ -58,7 +58,10 @@ const router = createBrowserRouter([
                 path: '/login',
                 element: <Login></Login>
             },
-           
+            {
+                path: '/aboutUs',
+                element: <AboutUs></AboutUs>
+            },
 
         ]
     }

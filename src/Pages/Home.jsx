@@ -4,6 +4,7 @@ import EventHighlights from '../Components/EventHighlights';
 import VolunteerNeedsNow from '../Components/VolunteerNeedsNow';
 import TestimonialsStatic from '../Components/TestimonialsStatic';
 import { Helmet } from 'react-helmet-async';
+import FeaturedProducts from '../Update/FeaturedProducts';
 
 const Home = () => {
     return (
@@ -14,6 +15,7 @@ const Home = () => {
             <BannerSlider></BannerSlider>
             <VolunteerNeedsNow></VolunteerNeedsNow>
             <EventHighlights></EventHighlights>
+            <FeaturedProducts></FeaturedProducts>
             <TestimonialsStatic></TestimonialsStatic>
 
         </div>
