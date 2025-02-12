@@ -10,6 +10,7 @@ import SocialLogin from '../Common/SocialLogin';
 
 
 const Login = () => {
+  
   const { signInUser, updateUserProfile, user } = useContext(AuthContext);
   const navigate = useNavigate();
 

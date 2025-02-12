@@ -3,7 +3,8 @@ import axios from 'axios';
 import { Link } from 'react-router-dom';
 import { FaTable, FaTh } from 'react-icons/fa';
 import { Helmet } from 'react-helmet-async';
-// http://localhost:5000/volunteer-needss
+
+
 const AllPosts = () => {
   const [posts, setPosts] = useState([]);
   const [search, setSearch] = useState('');
@@ -15,7 +16,7 @@ const AllPosts = () => {
 
   const fetchPosts = async () => {
     try {
-      const response = await axios.get('http://localhost:5000/volunteer-needss', {
+      const response = await axios.get('https://assingment11-lemon.vercel.app/volunteer-needss', {
         params: { title: search }
       });
       setPosts(response.data);
@@ -75,7 +76,7 @@ const AllPosts = () => {
                     <td className="py-3 px-4 border-b">{post.location}</td>
                     <td className="py-3 px-4 border-b">{post.volunteersNeeded}</td>
                     <td className="py-3 px-4 border-b">
-                      <Link to={`/postDetails/${post._id}`} className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-lg">
+                      <Link to={`/postDetails/${post._id}`} className="block bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-800 hover:to-purple-800 text-white font-semibold text-center py-3 px-6 rounded-full mt-4 shadow-lg transform transition-all duration-300 ease-in-out hover:scale-105">
                         View Details
                       </Link>
                     </td>

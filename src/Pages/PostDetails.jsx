@@ -21,7 +21,7 @@ const PostDetails = () => {
 
   const fetchPostDetails = async () => {
     try {
-      const { data } = await axios.get(`http://localhost:5000/volunteer-needs/${id}`);
+      const { data } = await axios.get(`https://assingment11-lemon.vercel.app/volunteer-needs/${id}`);
       setPost(data);
     } catch (error) {
       Swal.fire({
@@ -75,7 +75,7 @@ const PostDetails = () => {
       <Helmet>
         <title>Post Details</title>
       </Helmet>
-      <div className="container mx-auto py-16 px-4">
+      <div className="container mx-auto py-16 px-4 mt-32">
         <div className="bg-white shadow-xl rounded-lg overflow-hidden md:flex md:space-x-6">
           <div className="w-full md:w-1/2 h-64 md:h-auto">
             <img
@@ -113,8 +113,8 @@ const PostDetails = () => {
               whileHover={{ scale: 1.05 }}
               onClick={() => handleBeVolunteer(post._id)}
               className={`${isButtonDisabled
-                  ? 'bg-gray-400 cursor-not-allowed'
-                  : 'bg-indigo-600 hover:bg-indigo-700'
+                ? 'bg-gray-400 cursor-not-allowed'
+                : 'bg-indigo-600 hover:bg-indigo-700'
                 } text-white font-bold py-3 px-6 rounded-full transition-all duration-300 shadow-md`}
               disabled={isButtonDisabled}
             >
