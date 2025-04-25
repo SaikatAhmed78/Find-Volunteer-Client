@@ -57,11 +57,7 @@ const BannerSlider = () => {
                 {banner.subtitle}
               </p>
 
-              <Link to="/aboutUs">
-                <button className="mt-6 bg-blue-600 hover:bg-blue-700 text-white px-8 py-3 text-lg font-semibold rounded-lg shadow-md transition-all duration-300">
-                  Learn More
-                </button>
-              </Link>
+             
             </div>
           </div>
         ))}
