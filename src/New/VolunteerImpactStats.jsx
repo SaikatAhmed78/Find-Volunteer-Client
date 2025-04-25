@@ -1,30 +1,30 @@
 // VolunteerImpactStats.jsx
 import React from 'react';
 import CountUp from 'react-countup';
-import { Users, Clock, Globe, Calendar } from 'lucide-react';
+import { FaUsers, FaClock, FaGlobe, FaCalendarAlt } from 'react-icons/fa';
 
 const stats = [
   {
     id: 1,
-    icon: <Users className="w-8 h-8 text-green-600" />,
+    icon: <FaUsers className="w-8 h-8 text-green-600" />,
     value: 1200,
     label: 'Active Volunteers',
   },
   {
     id: 2,
-    icon: <Clock className="w-8 h-8 text-blue-600" />,
+    icon: <FaClock className="w-8 h-8 text-blue-600" />,
     value: 8500,
     label: 'Hours Contributed',
   },
   {
     id: 3,
-    icon: <Globe className="w-8 h-8 text-orange-500" />,
+    icon: <FaGlobe className="w-8 h-8 text-orange-500" />,
     value: 35,
     label: 'Regions Covered',
   },
   {
     id: 4,
-    icon: <Calendar className="w-8 h-8 text-purple-600" />,
+    icon: <FaCalendarAlt className="w-8 h-8 text-purple-600" />,
     value: 180,
     label: 'Events Completed',
   },
@@ -32,7 +32,7 @@ const stats = [
 
 const VolunteerImpactStats = () => {
   return (
-    <section className="py-16 bg-gray-100 dark:bg-gray-900">
+    <section className="py-16 bg-gray-100 dark:bg-gray-900 mt-10">
       <div className="max-w-7xl mx-auto px-4 text-center">
         <h2 className="text-3xl font-bold mb-8 text-gray-800 dark:text-white">Our Impact So Far</h2>
         <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
