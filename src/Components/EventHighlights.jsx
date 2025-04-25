@@ -29,26 +29,29 @@ const events = [
 const EventHighlights = () => {
   return (
     <div className="container mx-auto px-6 py-12 my-10">
-      <h2 className="text-4xl font-extrabold text-center text-lime-500 mb-12 uppercase tracking-wide">
+      <h2 className="text-4xl font-extrabold text-center text-lime-500  mb-6 uppercase tracking-wide">
         Upcoming Volunteer Events
       </h2>
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-10">
+      <p className="text-lg text-center text-blue-600 mb-10">
+        Explore our upcoming events and find an opportunity to make a positive impact in your community.
+      </p>
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
         {events.map((event, index) => (
           <motion.div
             key={index}
-            className="bg-gradient-to-br from-indigo-500 to-purple-600 text-white p-6 rounded-2xl shadow-xl transform hover:scale-105 transition-all duration-500"
+            className="bg-white text-gray-800 p-6 rounded-xl shadow-md hover:shadow-lg transform hover:scale-105 transition-all duration-500"
             whileHover={{ scale: 1.05 }}
           >
-            <h3 className="text-2xl font-semibold text-center mb-4">{event.title}</h3>
-            <div className="flex items-center justify-center gap-3 text-lg font-medium">
-              <FaCalendarAlt className="text-yellow-300" />
+            <h3 className="text-xl font-bold text-center mb-3">{event.title}</h3>
+            <div className="flex items-center justify-center gap-2 text-md font-medium text-gray-700">
+              <FaCalendarAlt className="text-blue-500" />
               <span>{event.date}</span>
             </div>
-            <div className="flex items-center justify-center gap-3 text-lg font-medium my-4">
-              <FaMapMarkerAlt className="text-green-300" />
+            <div className="flex items-center justify-center gap-2 text-md font-medium text-gray-700 my-3">
+              <FaMapMarkerAlt className="text-red-500" />
               <span>{event.location}</span>
             </div>
-            <p className="text-sm text-center opacity-90 leading-relaxed">
+            <p className="text-sm text-center leading-relaxed">
               {event.description}
             </p>
           </motion.div>

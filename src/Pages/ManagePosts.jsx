@@ -6,7 +6,7 @@ import AuthContext from '../Context/AuthContext';
 import { Helmet } from 'react-helmet-async';
 import { FaTrash, FaEdit } from 'react-icons/fa';
 
-// https://assingment11-lemon.vercel.app
+// https://assingment11-lemon.vercel.app 
 
 const ManagePosts = () => {
   const { user } = useContext(AuthContext);
@@ -38,6 +38,8 @@ const ManagePosts = () => {
     fetchVolunteerRequestPosts();
   }, [user.email]);
 
+
+
   const handleDelete = async (postId) => {
     Swal.fire({
       title: 'Delete Post?',
@@ -49,7 +51,7 @@ const ManagePosts = () => {
     }).then(async (result) => {
       if (result.isConfirmed) {
         try {
-          await axios.delete(`https://assingment11-lemon.vercel.app/${postId}`);
+          await axios.delete(`https://assingment11-lemon.vercel.app/volunteer-needs/${postId}`);
           Swal.fire('Deleted!', 'Your post has been deleted.', 'success');
           setVolunteerNeedPosts(volunteerNeedPosts.filter(post => post._id !== postId));
         } catch (error) {
@@ -58,6 +60,7 @@ const ManagePosts = () => {
       }
     });
   };
+
 
   const handleCancelRequest = async (requestId) => {
     Swal.fire({

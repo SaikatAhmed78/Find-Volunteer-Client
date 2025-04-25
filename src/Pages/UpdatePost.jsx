@@ -21,7 +21,7 @@ const UpdatePost = () => {
   });
 
   useEffect(() => {
-    axios.get(`https://edu-connect-server-five.vercel.app/volunteer-needs/${id}`)
+    axios.get(`https://assingment11-lemon.vercel.app/volunteer-needs/${id}`)
       .then(res => {
         const { thumbnail, postTitle, description, category, location, volunteersNeeded, deadline, organizerName, organizerEmail } = res.data;
         setPostData({
@@ -49,7 +49,7 @@ const UpdatePost = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    axios.put(`https://edu-connect-server-five.vercel.app/volunteer-needs/${id}`, postData)
+    axios.put(`https://assingment11-lemon.vercel.app/volunteer-needs/${id}`, postData)
       .then(() => {
         Swal.fire({
           title: 'Success!',

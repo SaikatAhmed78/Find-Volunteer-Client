@@ -25,7 +25,7 @@ const testimonials = [
 
 const TestimonialsStatic = () => {
   return (
-    <div className="py-20 px-6 mb-10 rounded-xl flex flex-col items-center justify-center min-h-screen bg-gradient-to-b from-gray-800 to-gray-900">
+    <div className="py-20 px-6 my-10 mb-12 rounded-xl flex flex-col items-center justify-center bg-gradient-to-b from-gray-800 to-gray-900">
       <h2 className="text-5xl font-extrabold text-white mb-16">What People Say</h2>
       <motion.div
         className="max-w-7xl w-full grid grid-cols-1 md:grid-cols-3 gap-12"

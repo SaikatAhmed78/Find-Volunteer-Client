@@ -12,6 +12,8 @@ const Home = () => {
             <Helmet>
                 <title>Home | Volunteer Platform</title>
             </Helmet>
+
+            
             <BannerSlider></BannerSlider>
             <VolunteerNeedsNow></VolunteerNeedsNow>
             <EventHighlights></EventHighlights>

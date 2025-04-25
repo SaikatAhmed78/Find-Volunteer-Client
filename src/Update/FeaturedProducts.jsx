@@ -33,7 +33,7 @@ const FeaturedProducts = () => {
     ];
 
     return (
-        <div className="py-16 mt-4 mb-10">
+        <div className="py-16 my-10 mb-10">
             <div className="container mx-auto text-center">
                 <h2 className="text-4xl font-extrabold uppercase text-lime-500 mb-3 tracking-wide
                 

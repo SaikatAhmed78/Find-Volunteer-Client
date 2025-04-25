@@ -81,7 +81,7 @@ const AddPost = () => {
             backgroundSize: "cover"
           }}>
         </div>
-        <div className="absolute inset-0 bg-black bg-opacity-50"></div>
+        <div className="absolute inset-0 bg-black bg-opacity-50 rounded-lg"></div>
         <div className="relative z-10 max-w-4xl mx-auto p-10 rounded-lg">
           <h2 className="text-3xl font-extrabold mb-6 text-center text-blue-700">Add Volunteer Need Post</h2>
           <form onSubmit={handlePost} className="grid grid-cols-1 gap-6 md:grid-cols-2">
