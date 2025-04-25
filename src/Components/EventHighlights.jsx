@@ -28,7 +28,7 @@ const events = [
 
 const EventHighlights = () => {
   return (
-    <div className="container mx-auto px-6 py-12 my-10">
+    <div className="container mx-auto px-6 py-12 mt-10">
       <h2 className="text-4xl font-extrabold text-center text-lime-500  mb-6 uppercase tracking-wide">
         Upcoming Volunteer Events
       </h2>

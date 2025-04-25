@@ -32,7 +32,7 @@ const stats = [
 
 const VolunteerImpactStats = () => {
   return (
-    <section className="py-16 bg-gray-100 dark:bg-gray-900 mt-10">
+    <section className="py-16 bg-gray-100 dark:bg-gray-900 mt-10 rounded-lg">
       <div className="max-w-7xl mx-auto px-4 text-center">
         <h2 className="text-3xl font-bold mb-8 text-gray-800 dark:text-white">Our Impact So Far</h2>
         <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
