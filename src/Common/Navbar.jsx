@@ -1,5 +1,9 @@
+
 import { Link, useNavigate } from 'react-router-dom';
-import { FaSignOutAlt, FaSignInAlt, FaPlus, FaListAlt, FaHome, FaClipboardList, FaBars, FaInfoCircle } from 'react-icons/fa';
+import {
+  FaSignOutAlt, FaSignInAlt, FaPlus, FaListAlt, FaHome,
+  FaClipboardList, FaBars, FaInfoCircle
+} from 'react-icons/fa';
 import { useContext, useEffect, useState } from 'react';
 import Logo from '../../src/assets/logo/360_F_272398712_z28EMWLbM9Y8zojg51tLZo4D8Ju3R7EG.jpg';
 import ThemeToggle from '../Components/ThemeToggle';
@@ -18,72 +22,107 @@ const Navbar = () => {
   }, [user, logout, navigate]);
 
   return (
-    <header className="fixed top-0 left-0 z-50 w-full shadow-md bg-white/90 dark:bg-gray-900/90 backdrop-blur-md border-b border-gray-200 dark:border-gray-700">
-      <nav className="flex justify-between items-center px-4 md:px-10 py-3">
-        {/* Logo and title */}
-        <Link to="/" className="flex items-center gap-3">
-          <img src={Logo} alt="Logo" className="w-10 h-10 rounded-full" />
-          <span className="text-2xl md:text-3xl font-extrabold bg-clip-text text-transparent bg-gradient-to-r from-green-400 to-emerald-600">
-            Be The Change
-          </span>
+    <div className="navbar bg-gradient-to-r from-green-500 via-teal-500 to-emerald-500 shadow-xl dark:bg-gray-900 w-full px-4 md:px-6 fixed top-0 left-0 z-50">
+      <div className="flex flex-wrap items-center justify-between w-full">
+        <Link to="/" className="flex items-center text-white text-2xl font-extrabold dark:text-gray-200">
+          <img src={Logo} alt="Logo" className="w-10 h-10 rounded-full mr-2" />
+          <span className="text-3xl font-bold tracking-wide bg-clip-text text-transparent bg-gradient-to-r from-yellow-300 to-pink-400 drop-shadow-lg">Be The Change</span>
         </Link>
 
-        {/* Desktop Menu */}
-        <ul className="hidden md:flex items-center gap-6 text-base font-medium text-gray-800 dark:text-gray-100">
-          <li><Link to="/" className="hover:text-emerald-500 flex items-center gap-2"><FaHome /> Home</Link></li>
-          <li><Link to="/allPosts" className="hover:text-emerald-500 flex items-center gap-2"><FaListAlt /> All Posts</Link></li>
-          <li><Link to="/aboutUs" className="hover:text-emerald-500 flex items-center gap-2"><FaInfoCircle /> About Us</Link></li>
+        <div className="hidden md:flex flex-1 justify-center items-center space-x-8">
+          <NavItem to="/" icon={<FaHome />} text="Home" />
+          <NavItem to="/allPosts" icon={<FaListAlt />} text="All Posts" />
+          <NavItem to="/aboutUs" icon={<FaInfoCircle />} text="About Us" />
+        </div>
 
+        <div className="hidden md:flex items-center space-x-4">
           {user ? (
-            <li className="relative group">
-              <div className="flex items-center gap-2 cursor-pointer">
-                <img src={user?.photoURL} alt="User Avatar" className="w-9 h-9 rounded-full border border-emerald-500" />
+            <div className="dropdown dropdown-end">
+              <div tabIndex={0} className="avatar cursor-pointer">
+                <div className="w-10 rounded-full ring ring-primary ring-offset-base-100 ring-offset-2">
+                  <img src={user?.photoURL} alt="User Avatar" className="w-full h-full rounded-full" />
+                </div>
               </div>
-              <ul className="absolute hidden group-hover:block top-12 right-0 bg-white dark:bg-gray-800 border dark:border-gray-700 rounded-md shadow-md p-3 z-50 min-w-[200px] space-y-2">
-                <li className="text-gray-700 dark:text-gray-100 font-semibold">{user?.displayName}</li>
-                <li><Link to="/addPost" className="flex items-center gap-2 hover:text-emerald-600"><FaPlus /> Add Post</Link></li>
-                <li><Link to="/managePost" className="flex items-center gap-2 hover:text-emerald-600"><FaClipboardList /> Manage Posts</Link></li>
-                <li><button onClick={logout} className="flex items-center gap-2 hover:text-red-500"><FaSignOutAlt /> Logout</button></li>
+              <ul tabIndex={0} className="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 text-gray-800 rounded-box w-52 dark:bg-gray-800 dark:text-gray-200">
+                <li className="font-semibold text-lg">
+                  <span>{user?.displayName}</span>
+                </li>
+                <li>
+                  <Link to="/addPost" className="flex items-center">
+                    <FaPlus className="mr-2" /> Add a New Post
+                  </Link>
+                </li>
+                <li>
+                  <Link to="/managePost" className="flex items-center">
+                    <FaClipboardList className="mr-2" /> Manage Your Posts
+                  </Link>
+                </li>
+                <li>
+                  <button onClick={logout} className="text-sm flex items-center">
+                    <FaSignOutAlt className="mr-2" /> Logout
+                  </button>
+                </li>
               </ul>
-            </li>
+            </div>
           ) : (
-            <li>
-              <Link to="/login" className="px-4 py-1.5 bg-emerald-500 hover:bg-emerald-600 text-white rounded-md flex items-center gap-2 text-sm">
-                <FaSignInAlt /> Login
-              </Link>
-            </li>
+            <Link to="/login" className="px-3 py-1 text-white bg-blue-600 rounded-md hover:bg-blue-700 transition-all text-sm flex items-center">
+              <FaSignInAlt className="mr-2" /> Login
+            </Link>
           )}
           <ThemeToggle />
-        </ul>
+        </div>
 
-        {/* Mobile Menu Toggle */}
-        <div className="md:hidden flex items-center">
-          <ThemeToggle />
-          <button onClick={() => setMenuOpen(!menuOpen)} className="text-2xl ml-4 text-gray-800 dark:text-gray-200">
+        <div className="md:hidden">
+          <button onClick={() => setMenuOpen(!menuOpen)} className="text-white text-2xl dark:text-gray-200">
             <FaBars />
           </button>
         </div>
-      </nav>
+      </div>
 
-      {/* Mobile Menu */}
       {menuOpen && (
-        <div className="md:hidden bg-white dark:bg-gray-900 px-4 py-3 space-y-3 text-gray-800 dark:text-gray-100">
-          <Link to="/" className="block flex items-center gap-2"><FaHome /> Home</Link>
-          <Link to="/allPosts" className="block flex items-center gap-2"><FaListAlt /> All Posts</Link>
-          <Link to="/aboutUs" className="block flex items-center gap-2"><FaInfoCircle /> About Us</Link>
-          {user ? (
-            <>
-              <Link to="/addPost" className="block flex items-center gap-2"><FaPlus /> Add Post</Link>
-              <Link to="/managePost" className="block flex items-center gap-2"><FaClipboardList /> Manage Posts</Link>
-              <button onClick={logout} className="block flex items-center gap-2 text-red-500"><FaSignOutAlt /> Logout</button>
-            </>
-          ) : (
-            <Link to="/login" className="block flex items-center gap-2 text-emerald-600"><FaSignInAlt /> Login</Link>
-          )}
+        <div className="absolute top-16 left-0 w-full bg-gradient-to-r from-green-500 via-teal-500 to-emerald-500 shadow-xl dark:bg-gray-900 p-4 z-50">
+          <ul className="flex flex-col space-y-3">
+            <NavMobileItem to="/" icon={<FaHome />} text="Home" />
+            <NavMobileItem to="/allPosts" icon={<FaListAlt />} text="All Posts" />
+            <NavMobileItem to="/aboutUs" icon={<FaInfoCircle />} text="About Us" />
+            {user ? (
+              <>
+                <NavMobileItem to="/addPost" icon={<FaPlus />} text="Add a New Post" />
+                <NavMobileItem to="/managePost" icon={<FaClipboardList />} text="Manage Your Posts" />
+                <li>
+                  <button onClick={logout} className="text-white py-2 text-lg dark:text-gray-200 flex items-center">
+                    <FaSignOutAlt className="mr-2" /> Logout
+                  </button>
+                </li>
+              </>
+            ) : (
+              <NavMobileItem to="/login" icon={<FaSignInAlt />} text="Login" />
+            )}
+            <ThemeToggle />
+          </ul>
         </div>
       )}
-    </header>
+    </div>
   );
 };
+
+// Reusable link component
+const NavItem = ({ to, icon, text }) => (
+  <Link
+    to={to}
+    className="text-white font-semibold text-lg hover:scale-110 hover:text-yellow-300 transition-all duration-200 dark:text-gray-200 flex items-center"
+  >
+    <span className="mr-2">{icon}</span> {text}
+  </Link>
+);
+
+// Mobile nav item
+const NavMobileItem = ({ to, icon, text }) => (
+  <li>
+    <Link to={to} className="text-white py-2 text-lg dark:text-gray-200 flex items-center">
+      <span className="mr-2">{icon}</span> {text}
+    </Link>
+  </li>
+);
 
 export default Navbar;
