@@ -25,8 +25,8 @@ const testimonials = [
 
 const TestimonialsStatic = () => {
   return (
-    <div className="py-20 px-6 my-10 mb-12 rounded-xl flex flex-col items-center justify-center bg-gradient-to-b from-gray-800 to-gray-900 mt-10">
-      <h2 className="text-5xl font-extrabold text-white mb-16">What People Say</h2>
+    <div className="py-20 px-6 my-10 mb-12 rounded-xl flex flex-col items-center justify-center mt-10">
+      <h2 className="text-5xl font-extrabold text-lime-500  mb-16 tracking-widest text-center">What People Say</h2>
       <motion.div
         className="max-w-7xl w-full grid grid-cols-1 md:grid-cols-3 gap-12"
         initial={{ opacity: 0, y: 50 }}
@@ -36,26 +36,24 @@ const TestimonialsStatic = () => {
         {testimonials.map((testimonial, index) => (
           <motion.div
             key={index}
-            className="bg-white rounded-xl shadow-lg p-8 flex flex-col items-center text-center transform transition duration-300 hover:scale-105"
+            className="bg-white rounded-xl shadow-lg p-8 flex flex-col items-center text-center transform transition duration-300 hover:scale-105 hover:shadow-2xl"
             whileHover={{ scale: 1.05 }}
           >
             <motion.img
               src={testimonial.image}
               alt={testimonial.name}
-              className="w-32 h-32 rounded-full border-4 border-gray-300 shadow-md mb-4"
+              className="w-32 h-32 rounded-full border-4 border-teal-300 shadow-lg mb-4 transform transition-all duration-300 hover:scale-110"
               initial={{ scale: 0.9 }}
               animate={{ scale: 1 }}
               transition={{ duration: 0.5 }}
             />
-            <FaQuoteLeft className="text-gray-500 text-3xl mb-3" />
-            <p className="text-gray-700 text-lg italic leading-relaxed">
+            <FaQuoteLeft className="text-teal-500 text-4xl mb-4" />
+            <p className="text-gray-700 text-lg italic leading-relaxed px-4 mb-4">
               {testimonial.quote}
             </p>
-            <FaQuoteRight className="text-gray-500 text-3xl mt-3" />
-            <h3 className="text-xl font-bold text-gray-800 mt-4">
-              {testimonial.name}
-            </h3>
-            <p className="text-md text-gray-500">{testimonial.role}</p>
+            <FaQuoteRight className="text-teal-500 text-4xl mt-4" />
+            <h3 className="text-xl font-bold text-gray-800 mt-4">{testimonial.name}</h3>
+            <p className="text-md text-teal-600 font-semibold">{testimonial.role}</p>
           </motion.div>
         ))}
       </motion.div>
