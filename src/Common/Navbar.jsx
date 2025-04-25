@@ -18,111 +18,71 @@ const Navbar = () => {
   }, [user, logout, navigate]);
 
   return (
-    <div className="navbar bg-gradient-to-r from-indigo-600 via-purple-600 to-pink-600 shadow-xl dark:bg-gray-900 w-full px-4 md:px-6 fixed top-0 left-0 z-50">
-      <div className="flex items-center justify-between w-full">
-        <Link to="/" className="flex items-center text-white text-2xl font-extrabold dark:text-gray-200">
-          <img src={Logo} alt="Logo" className="w-10 h-10 rounded-full mr-2" />
-          <span className="text-3xl font-bold tracking-wide bg-clip-text text-transparent bg-gradient-to-r from-yellow-300 to-pink-400 drop-shadow-lg">Be The Change</span>
+    <header className="fixed top-0 left-0 z-50 w-full shadow-md bg-white/90 dark:bg-gray-900/90 backdrop-blur-md border-b border-gray-200 dark:border-gray-700">
+      <nav className="flex justify-between items-center px-4 md:px-10 py-3">
+        {/* Logo and title */}
+        <Link to="/" className="flex items-center gap-3">
+          <img src={Logo} alt="Logo" className="w-10 h-10 rounded-full" />
+          <span className="text-2xl md:text-3xl font-extrabold bg-clip-text text-transparent bg-gradient-to-r from-green-400 to-emerald-600">
+            Be The Change
+          </span>
         </Link>
-        <div className="hidden md:flex items-center space-x-6">
-          <Link to="/" className="text-white text-lg font-semibold hover:scale-105 transition-all dark:text-gray-200 flex items-center">
-            <FaHome className="mr-2" /> Home
-          </Link>
-          <Link to="/allPosts" className="text-white text-lg font-semibold hover:scale-105 transition-all dark:text-gray-200 flex items-center">
-            <FaListAlt className="mr-2" /> All Posts
-          </Link>
-          <Link to="/aboutUs" className="text-white text-lg font-semibold hover:scale-105 transition-all dark:text-gray-200 flex items-center">
-            <FaInfoCircle className="mr-2" /> About Us
-          </Link>
+
+        {/* Desktop Menu */}
+        <ul className="hidden md:flex items-center gap-6 text-base font-medium text-gray-800 dark:text-gray-100">
+          <li><Link to="/" className="hover:text-emerald-500 flex items-center gap-2"><FaHome /> Home</Link></li>
+          <li><Link to="/allPosts" className="hover:text-emerald-500 flex items-center gap-2"><FaListAlt /> All Posts</Link></li>
+          <li><Link to="/aboutUs" className="hover:text-emerald-500 flex items-center gap-2"><FaInfoCircle /> About Us</Link></li>
+
           {user ? (
-            <div className="dropdown dropdown-end">
-              <div tabIndex={0} className="avatar cursor-pointer">
-                <div className="w-10 rounded-full ring ring-primary ring-offset-base-100 ring-offset-2">
-                  <img src={user?.photoURL} alt="User Avatar" className="w-full h-full rounded-full" />
-                </div>
+            <li className="relative group">
+              <div className="flex items-center gap-2 cursor-pointer">
+                <img src={user?.photoURL} alt="User Avatar" className="w-9 h-9 rounded-full border border-emerald-500" />
               </div>
-              <ul tabIndex={0} className="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 text-gray-800 rounded-box w-52 dark:bg-gray-800 dark:text-gray-200">
-                <li className="font-semibold text-lg">
-                  <span>{user?.displayName}</span>
-                </li>
-                <li>
-                  <Link to="/addPost" className="flex items-center">
-                    <FaPlus className="mr-2" /> Add a New Post
-                  </Link>
-                </li>
-                <li>
-                  <Link to="/managePost" className="flex items-center">
-                    <FaClipboardList className="mr-2" /> Manage Your Posts
-                  </Link>
-                </li>
-                <li>
-                  <button onClick={logout} className="text-sm flex items-center">
-                    <FaSignOutAlt className="mr-2" /> Logout
-                  </button>
-                </li>
+              <ul className="absolute hidden group-hover:block top-12 right-0 bg-white dark:bg-gray-800 border dark:border-gray-700 rounded-md shadow-md p-3 z-50 min-w-[200px] space-y-2">
+                <li className="text-gray-700 dark:text-gray-100 font-semibold">{user?.displayName}</li>
+                <li><Link to="/addPost" className="flex items-center gap-2 hover:text-emerald-600"><FaPlus /> Add Post</Link></li>
+                <li><Link to="/managePost" className="flex items-center gap-2 hover:text-emerald-600"><FaClipboardList /> Manage Posts</Link></li>
+                <li><button onClick={logout} className="flex items-center gap-2 hover:text-red-500"><FaSignOutAlt /> Logout</button></li>
               </ul>
-            </div>
+            </li>
           ) : (
-            <Link to="/login" className="px-3 py-1 text-white bg-blue-600 rounded-md hover:bg-blue-700 transition-all text-sm flex items-center">
-              <FaSignInAlt className="mr-2" /> Login
-            </Link>
+            <li>
+              <Link to="/login" className="px-4 py-1.5 bg-emerald-500 hover:bg-emerald-600 text-white rounded-md flex items-center gap-2 text-sm">
+                <FaSignInAlt /> Login
+              </Link>
+            </li>
           )}
           <ThemeToggle />
-        </div>
-        <div className="md:hidden">
-          <button onClick={() => setMenuOpen(!menuOpen)} className="text-white text-2xl dark:text-gray-200">
+        </ul>
+
+        {/* Mobile Menu Toggle */}
+        <div className="md:hidden flex items-center">
+          <ThemeToggle />
+          <button onClick={() => setMenuOpen(!menuOpen)} className="text-2xl ml-4 text-gray-800 dark:text-gray-200">
             <FaBars />
           </button>
         </div>
-      </div>
+      </nav>
+
+      {/* Mobile Menu */}
       {menuOpen && (
-        <div className="absolute top-16 left-0 w-full bg-gradient-to-r from-indigo-600 via-purple-600 to-pink-600 shadow-xl dark:bg-gray-900 p-4 z-50">
-          <ul className="flex flex-col space-y-3">
-            <li>
-              <Link to="/" className="text-white py-2 text-lg dark:text-gray-200 flex items-center">
-                <FaHome className="mr-2" /> Home
-              </Link>
-            </li>
-            <li>
-              <Link to="/allPosts" className="text-white py-2 text-lg dark:text-gray-200 flex items-center">
-                <FaListAlt className="mr-2" /> All Posts
-              </Link>
-            </li>
-            <li>
-              <Link to="/aboutUs" className="text-white py-2 text-lg dark:text-gray-200 flex items-center">
-                <FaInfoCircle className="mr-2" /> About Us
-              </Link>
-            </li>
-            {user ? (
-              <>
-                <li>
-                  <Link to="/addPost" className="text-white py-2 text-lg dark:text-gray-200 flex items-center">
-                    <FaPlus className="mr-2" /> Add a New Post
-                  </Link>
-                </li>
-                <li>
-                  <Link to="/managePost" className="text-white py-2 text-lg dark:text-gray-200 flex items-center">
-                    <FaClipboardList className="mr-2" /> Manage Your Posts
-                  </Link>
-                </li>
-                <li>
-                  <button onClick={logout} className="text-white py-2 text-lg dark:text-gray-200 flex items-center">
-                    <FaSignOutAlt className="mr-2" /> Logout
-                  </button>
-                </li>
-              </>
-            ) : (
-              <li>
-                <Link to="/login" className="text-white py-2 text-lg dark:text-gray-200 flex items-center">
-                  <FaSignInAlt className="mr-2" /> Login
-                </Link>
-              </li>
-            )}
-          </ul>
-          <ThemeToggle />
+        <div className="md:hidden bg-white dark:bg-gray-900 px-4 py-3 space-y-3 text-gray-800 dark:text-gray-100">
+          <Link to="/" className="block flex items-center gap-2"><FaHome /> Home</Link>
+          <Link to="/allPosts" className="block flex items-center gap-2"><FaListAlt /> All Posts</Link>
+          <Link to="/aboutUs" className="block flex items-center gap-2"><FaInfoCircle /> About Us</Link>
+          {user ? (
+            <>
+              <Link to="/addPost" className="block flex items-center gap-2"><FaPlus /> Add Post</Link>
+              <Link to="/managePost" className="block flex items-center gap-2"><FaClipboardList /> Manage Posts</Link>
+              <button onClick={logout} className="block flex items-center gap-2 text-red-500"><FaSignOutAlt /> Logout</button>
+            </>
+          ) : (
+            <Link to="/login" className="block flex items-center gap-2 text-emerald-600"><FaSignInAlt /> Login</Link>
+          )}
         </div>
       )}
-    </div>
+    </header>
   );
 };
 
